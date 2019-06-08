@@ -28,9 +28,9 @@ read -p "Press ENTER whenever you're ready."
 cfdisk $drivetouse
 clear
 
-read -p "What is your BOOT partition? e.g. /dev/sda1" bootpartition
-read -p "What is your SWAP partition? e.g. /dev/sda2" swappartition
-read -p "What is your ROOT partition? e.g. /dev/sda3" rootpartition
+read -p "What is your BOOT partition? (e.g. /dev/sda1) = " bootpartition
+read -p "What is your SWAP partition? (e.g. /dev/sda2) = " swappartition
+read -p "What is your ROOT partition? (e.g. /dev/sda3) = " rootpartition
 echo "BOOT = $bootpartition"
 echo "SWAP = $swappartition"
 echo "ROOT = $rootpartition"
