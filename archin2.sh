@@ -15,6 +15,8 @@ nano /etc/locale.conf # Write   LANG=en_CA.UTF-8
 # Hostname stuff
 read -p "Hosts stuff, see readme"
 nano /etc/hostname # Write the computer's hostname, for example "arch"
+cp hosts /etc/hosts
+read -p "Replace 'arch' with the hostname you chose."
 nano /etc/hosts # Add the matching entries to the hosts file
 # 127.0.0.1   localhost
 # ::1         localhost

@@ -4,6 +4,7 @@
 read -p "Press ENTER to start the installation process."
 wget raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
 wget raw.githubusercontent.com/Fwsh/archin/master/archind.sh
+wget raw.githubusercontent.com/Fwsh/archin/master/hosts
 
 ## Let's create partitions.
 ## You will need a boot partition, a swap partition and a root partition.
@@ -38,6 +39,8 @@ pacstrap /mnt base # install the "base" package group to the mounted partition
 
 # Copy the second script to the install itself
 cp archin2.sh /mnt/archin2.sh
+cp archind.sh /mnt/archind.sh
+cp hosts /mnt/hosts
 
 # Generating fstab
 
@@ -45,5 +48,6 @@ genfstab -U /mnt >> /mnt/etc/fstab # Generate fstab
 
 # chrooting into the new system
 
-arch-chroot /mnt ./archin2.sh # Root into the new system
+read -p "Manually do 'arch-chroot /mnt' and 'sh archin2.sh'"
+#arch-chroot /mnt ./archin2.sh # Root into the new system
 
