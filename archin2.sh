@@ -7,24 +7,24 @@ hwclock --systohc # generate /etc/adjtime
 
 # Please uncomment your prefered locale (e.g., uncomment en_CA.utf-8 UTF-8)
 clear
-read -p "Please uncomment your prefered locale (e.g., en_CA.utf-8 UTF8)"
+read -p "Please uncomment your prefered locale (e.g., en_CA.utf-8 UTF8). Press ENTER to proceed."
 nano /etc/locale.gen # Uncomment #en_CA.UTF-8 UTF-8
 locale-gen # Generate what you just uncommented
 
 
 # Please type the locale you just chose (e.g., LANG=en_CA.UTF-8)
 clear
-read -p "Please type the locale you just chose (e.g., LANG=en_CA.UTF-8)"
+read -p "Please type the locale you just chose (e.g., LANG=en_CA.UTF-8). Press ENTER to proceed."
 nano /etc/locale.conf # Write   LANG=en_CA.UTF-8
 
 
 # Hostname stuff
 clear
-read -p "Please type in your hostname (aka your computer's name)."
+read -p "Please type in your hostname (aka your computer's name). Press ENTER to proceed."
 nano /etc/hostname # Write the computer's hostname, for example "arch"
 cp hosts /etc/hosts
 clear
-read -p "Please replace 'arch' with the hostname you just chose."
+read -p "Please replace 'arch' with the hostname you just chose. Press ENTER to proceed."
 nano /etc/hosts # Add the matching entries to the hosts file
 # 127.0.0.1   localhost
 # ::1         localhost

@@ -44,7 +44,7 @@ mkfs.ext4 $rootpartition #root
 swapon $swappartition #activate swap if exists
 
 
-read -p "We will now mount the root partition."
+read -p "We will now mount the root partition. Press ENTER to proceed."
 clear
 mount $rootpartition /mnt
 mount $bootpartition /mnt/boot
@@ -67,5 +67,5 @@ genfstab -U /mnt >> /mnt/etc/fstab # Generate fstab
 
 clear
 # chrooting into the new system
-read -p "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue."
+read -p "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue. (Press ENTER to be able to type it)."
 #arch-chroot /mnt ./archin2.sh # Root into the new system
