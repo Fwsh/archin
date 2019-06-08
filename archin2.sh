@@ -51,7 +51,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # Only either one of the following:
 clear
-read -p "IMPORTANT - What is your boot drive? e.g. /dev/sda" bootdrive
+read -p "IMPORTANT - What is your boot drive? (e.g. /dev/sda) = " bootdrive
 grub-install --force --target=i386-pc --recheck $bootdrive
 # grub-install --target=x86_64-efi --efi-directory=/boot --recheck
 
