@@ -6,7 +6,8 @@ read -p "Press ENTER to continue."
 ip link
 
 # Let's create and enable this
-read -p "What is your adapter's code? e.g. eth0, enp0s3, enp0s25..." adaptercode
+echo "What is your adapter's code? (e.g. eth0, enp0s3, enp0s25...)"
+read -p "Code: " adaptercode
 systemctl enable dhcpcd@$adaptercode
 systemctl start dhcpcd@$adaptercode
 
@@ -36,4 +37,5 @@ pacman -S lxdm
 # Enable lxdm
 systemctl enable lxdm
 
+read -p "Done. Press ENTER to reboot."
 reboot

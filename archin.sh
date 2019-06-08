@@ -15,7 +15,7 @@ clear
 fdisk -l
 
 
-echo "Please enter the drive you want to use. For example, /dev/sda"
+echo "Please enter the drive you want to use. (For example, /dev/sda)"
 read -p "Drive: " drivetouse
 clear
 echo "We will be using the drive '$drivetouse'."
