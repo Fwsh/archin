@@ -3,7 +3,7 @@
 
 read -p "Press ENTER to start the installation process."
 wget raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
-wget raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
+wget raw.githubusercontent.com/Fwsh/archin/master/archind.sh
 
 ## Let's create partitions.
 ## You will need a boot partition, a swap partition and a root partition.
