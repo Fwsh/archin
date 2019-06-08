@@ -58,7 +58,7 @@ grub-install --force --target=i386-pc --recheck $bootdrive
 clear
 echo "Finished."
 echo "The base system is now installed. However, you may still want to install extra tools."
-echo "If you want help with enabling your ethernet port as well as installing a"
+echo "If you want help with enabling your ethernet port as well as installing"
 echo "a Desktop Environment, you can run 'sh /archind.sh' after booting."
 echo "If not, simply delete it and never think about it again."
 read -p "You may now reboot. Press ENTER to continue."
