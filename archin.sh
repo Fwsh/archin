@@ -69,5 +69,3 @@ clear
 # chrooting into the new system
 read -p "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue."
 #arch-chroot /mnt ./archin2.sh # Root into the new system
-
-reboot
