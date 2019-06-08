@@ -9,7 +9,7 @@ systemctl enable dhcpcd@enp0s3
 systemctl start dhcpcd@enp0s3
 
 # Ping it
-ping 8.8.8.8
+#ping 8.8.8.8
 
 # Update everything
 pacman -Syu
