@@ -16,7 +16,7 @@ This is an unstable BETA.
 
 - Step 2: wget raw.githubusercontent.com/Fwsh/archin/master/archinb/archinb.sh
 
-- Step 3: sh archin.sh
+- Step 3: sh archinb.sh
 
 
 Currently, the BETA is implementing menus.
