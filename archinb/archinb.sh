@@ -71,7 +71,7 @@ launchInstallation() {
 }
 
 downloadRequiredScripts() {
-  wget raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
+  wget https://raw.githubusercontent.com/Fwsh/archin/master/archinb/archinb2.sh
   wget raw.githubusercontent.com/Fwsh/archin/master/archind.sh
   wget raw.githubusercontent.com/Fwsh/archin/master/hosts
   clear
