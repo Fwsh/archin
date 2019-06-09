@@ -33,7 +33,7 @@ continueToPart2() {
 
   clear
   # chrooting into the new system
-  read -p "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue. (Press ENTER to be able to type it)."
+  read -p "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue. (Quit the script in order to do so)."
   #arch-chroot /mnt ./archin2.sh # Root into the new system
 }
 
@@ -70,13 +70,23 @@ launchInstallation() {
   continueToPart2
 }
 
+downloadRequiredScripts() {
+  wget raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
+  wget raw.githubusercontent.com/Fwsh/archin/master/archind.sh
+  wget raw.githubusercontent.com/Fwsh/archin/master/hosts
+  clear
+  mainMenu
+}
 
 mainMenu() {
-  PS3='Please enter your choice: '
-  options=("Manage Partitions" "Launch Installation" "Continue to Part 2" "Quit")
+  PS3='Choice (ENTER to confirm): '
+  options=("Initialize (Required)" "Manage Partitions" "Launch Installation" "Continue to Part 2" "Quit")
   select opt in "${options[@]}"
   do
       case $opt in
+          "Initialize (Required)")
+              downloadRequiredScripts
+              ;;
           "Manage Partitions")
               launchPartitionManager
               ;;
@@ -94,9 +104,5 @@ mainMenu() {
   done
 }
 
-read -p "Press ENTER to start the installation process."
-wget raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
-wget raw.githubusercontent.com/Fwsh/archin/master/archind.sh
-wget raw.githubusercontent.com/Fwsh/archin/master/hosts
 clear
 mainMenu
