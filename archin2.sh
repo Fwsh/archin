@@ -174,7 +174,7 @@ installingGrub() {
 
 
 finalize() {
-clear
+	clear
 	echo "Finished."
 	echo "The base system is now installed. However, you may still want to install extra tools."
 	echo "If you want help with enabling your ethernet port as well as installing"
@@ -182,6 +182,7 @@ clear
 	echo "If not, simply delete it and never think about it again."
 	read -p "You may now eject your installation media and reboot. Press ENTER to continue."
 	clear
+	echo "To exit chroot and be able to reboot, use CTRL+C."
 	exit
 }
 
