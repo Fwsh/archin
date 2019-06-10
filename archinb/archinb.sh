@@ -27,14 +27,15 @@ launchPartitionManager() {
 
 continueToPart2() {
   # Copy the second script to the install itself
-  cp archin2.sh /mnt/archin2.sh
+  cp archinb2.sh /mnt/archinb2.sh
   cp archind.sh /mnt/archind.sh
   cp hosts /mnt/hosts
 
   clear
   # chrooting into the new system
-  read -p "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue. (Quit the script in order to do so)."
-  #arch-chroot /mnt ./archin2.sh # Root into the new system
+  echo "Please manually do 'arch-chroot /mnt' and 'sh archin2.sh' to continue."
+  read -p "(Quit the script in order to do so)."
+  arch-chroot /mnt ./archinb2.sh # Root into the new system
 }
 
 

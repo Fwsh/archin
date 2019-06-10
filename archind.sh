@@ -23,7 +23,7 @@ read -p "Press ENTER to proceed, or CTRL+C to cancel."
 pacman -Syu
 
 # Install sudo
-pacman -S sudo
+#pacman -S sudo
 
 # Install neofetch
 pacman -S neofetch
