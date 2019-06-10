@@ -118,7 +118,7 @@ setRootPassword() {
 installingGrub() {
 	# Getting grub and installing it
 	clear
-	read -p "Press ENTER to install GRUB."
+	echo "Installing GRUB."
 	pacman -S grub efibootmgr # Install grub and efibootmgr
 	# Processing grub
 	mkdir /boot/grub
