@@ -2,7 +2,7 @@
 
 - Step 1: Boot the Arch Linux iso.
 
-- Step 2: wget raw.githubusercontent.com/Fwsh/archin/master/archin.sh
+- Step 2: wget fwsh.github.io/archin/archin.sh
 
 - Step 3: bash archin.sh
 
