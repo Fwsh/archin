@@ -52,8 +52,9 @@
 mainMenu3() {
   clear
   echo "- - archin: Part 3 (optional) - -"
+  echo "!!! NOTICE !!! - You may need to run 'Setup Network' more than once - this is a bug."
   PS3='Choice (ENTER to confirm): '
-  options=("Setup Network" "Update" "Install a Desktop Environment" "Install a Login Manager [lxdm]" "Install SUDO" "Install NEOFETCH" "Install YAY [AUR]" "Reboot")
+  options=("Setup Network" "Update" "Install a Desktop Environment" "Install a Login Manager [lxdm]" "Install SUDO" "Install NEOFETCH" "Reboot")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -114,11 +115,6 @@ mainMenu3() {
           "Install NEOFETCH")
 			  clear
 			  pacman -S neofetch
-			  mainMenu3
-              ;;
-          "Install YAY [AUR]")
-			  clear
-			  pacman -S yay
 			  mainMenu3
               ;;
           "Reboot")

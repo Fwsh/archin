@@ -50,7 +50,6 @@ continueToPart2() {
 
 
 launchInstallation() {
-
   # Boot partition
   readarray -t lines < <(blkid -o device | grep "sd")
   echo "- - -"
