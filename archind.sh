@@ -1,16 +1,20 @@
 #!/bin/bash
 # archind by github.com/Fwsh
 
-# Network check
-echo "Check the network adapter's code from this (e.g. eth0, or it could be enp0s25)"
-read -p "Press ENTER to continue."
-ip link
+# Network check and start
+#echo "Check the network adapter's code from this (e.g. eth0, or it could be enp0s25)"
+#read -p "Press ENTER to continue."
+#ip link
+#echo "What is your adapter's code? (e.g. eth0, enp0s3, enp0s25...)"
+#read -p "Code: " adaptercode
+#systemctl enable dhcpcd@$adaptercode
+#systemctl start dhcpcd@$adaptercode
 
-# Let's create and enable this
-echo "What is your adapter's code? (e.g. eth0, enp0s3, enp0s25...)"
-read -p "Code: " adaptercode
-systemctl enable dhcpcd@$adaptercode
-systemctl start dhcpcd@$adaptercode
+# Using dhcpcd instead
+systemctl enable dhcpcd
+systemctl start dhcpcd
+dhcpcd
+echo "Done."
 
 # Ping it
 #ping 8.8.8.8
