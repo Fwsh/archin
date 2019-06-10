@@ -1,3 +1,6 @@
+#!/bin/bash
+# archin2 by github.com/Fwsh
+
 
 setupLocale() {
 	PS3='Choice (ENTER to confirm): '

@@ -1,6 +1,7 @@
 #!/bin/bash
 # archind by github.com/Fwsh
 
+
 echo "Check the network adapter's code from this (e.g. eth0, or it could be enp0s25)"
 read -p "Press ENTER to continue."
 ip link
