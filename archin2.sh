@@ -182,7 +182,7 @@ finalize() {
 	echo "If not, simply delete it and never think about it again."
 	read -p "You may now eject your installation media and reboot. Press ENTER to continue."
 	clear
-	echo "To exit chroot and be able to reboot, use CTRL+C."
+	echo "To exit chroot and be able to reboot, type 'exit' and press ENTER."
 	exit
 }
 
