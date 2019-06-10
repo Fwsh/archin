@@ -4,7 +4,7 @@
 
 setupLocale() {
 	PS3='Choice (ENTER to confirm): '
-	options=("Automatically" "Manually" "Quit")
+	options=("Automatically" "Manually")
 	select opt in "${options[@]}"
 	do
 	  case $opt in
@@ -35,9 +35,6 @@ setupLocale() {
 			  nano /etc/locale.conf # Write   LANG=en_CA.UTF-8
 			  clear
 			  mainMenu2
-	          ;;
-	      "Quit")
-	          break
 	          ;;
 	      *) echo "invalid option $REPLY";;
 	  esac
@@ -188,6 +185,7 @@ finalize() {
 
 
 mainMenu2() {
+  echo "- - archin: Part 2 - -"
   PS3='Choice (ENTER to confirm): '
   options=("Setup Locale" "Setup Hostname" "Generate mkinitcpio" "Create root account" "Install GRUB" "Finalize")
   select opt in "${options[@]}"
@@ -210,7 +208,7 @@ mainMenu2() {
               ;;
           "Finalize")
               finalize
-              ;;
+			  ;;
           *) echo "invalid option $REPLY";;
       esac
   done

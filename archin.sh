@@ -42,8 +42,8 @@ continueToPart2() {
   cp hosts /mnt/hosts
   clear
   # chrooting into the new system
-  echo "Please manually do 'arch-chroot /mnt' and 'bash archin2.sh' to continue if it fails to execute."
-  read -p "(Quit the script in order to do so)."
+  #echo "Please manually do 'arch-chroot /mnt' and 'bash archin2.sh' to continue if it fails to execute."
+  #read -p "(Quit the script in order to do so)."
   chmod +x /mnt/archin2.sh
   arch-chroot /mnt ./archin2.sh # Root into the new system
 }
@@ -90,6 +90,7 @@ downloadRequiredScripts() {
 
 
 mainMenu() {
+  echo "- - archin: Part 1 - -"
   PS3='Choice (ENTER to confirm): '
   options=("Initialize (Required)" "Manage Partitions" "Launch Installation" "Continue to Part 2" "Quit")
   select opt in "${options[@]}"
