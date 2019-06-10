@@ -74,7 +74,7 @@ mainMenu3() {
           "Install a Desktop Environment")
 			  clear
 			  PS3='Choice (ENTER to confirm): '
-			  options=("xfce4" "lxde" "plasma" "i3-wm" "[Cancel]")
+			  options=("xfce4" "lxde" "plasma" "i3-wm")
 			  select opt in "${options[@]}"
 			  do
 			      case $opt in
@@ -93,9 +93,6 @@ mainMenu3() {
 			          "i3-wm")
 			              pacman -S i3-wm
 			              mainMenu3
-			              ;;
-			          "[Cancel]")
-			              break
 			              ;;
 			          *) echo "invalid option $REPLY";;
 			      esac
