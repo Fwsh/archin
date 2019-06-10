@@ -24,15 +24,11 @@ setupLocale() {
 			  read -p "Press ENTER to set the timezone to Canada/Toronto (custom options coming soon)."
 			  ln -sf /usr/share/zoneinfo/Canada/Toronto /etc/localtime #set timezone
 			  hwclock --systohc # generate /etc/adjtime
-
-
 			  # Please uncomment your prefered locale (e.g., uncomment en_CA.UTF-8 UTF-8)
 			  clear
 			  read -p "Please uncomment your prefered locale (e.g., en_CA.UTF-8 UTF-8). Press ENTER to proceed."
 			  nano /etc/locale.gen # Uncomment #en_CA.UTF-8 UTF-8
 			  locale-gen # Generate what you just uncommented
-
-
 			  # Please type the locale you just chose (e.g., LANG=en_CA.UTF-8)
 			  clear
 			  read -p "Please type the locale you just chose (e.g., LANG=en_CA.UTF-8). Press ENTER to proceed."
@@ -47,6 +43,7 @@ setupLocale() {
 	  esac
 	done
 }
+
 
 setupHostname() {
 	# Hostname stuff
@@ -67,6 +64,7 @@ setupHostname() {
 	mainMenu2
 }
 
+
 mkinitcpioGeneration() {
 	# Generating mkinitcpio
 	clear
@@ -75,6 +73,7 @@ mkinitcpioGeneration() {
 	clear
 	mainMenu2
 }
+
 
 setRootPassword() {
 	# Accounts
@@ -112,16 +111,15 @@ setRootPassword() {
 	mainMenu2
 }
 
+
 installingGrub() {
 	# Getting grub and installing it
 	clear
 	read -p "Press ENTER to install grub."
 	pacman -S grub efibootmgr # Install grub and efibootmgr
-
 	# Processing grub
 	mkdir /boot/grub
 	grub-mkconfig -o /boot/grub/grub.cfg
-
 	clear
 	echo "GRUB may only be installed in one mode. Which mode are you in?"
 	PS3='Choice (ENTER to confirm): '
@@ -162,15 +160,15 @@ installingGrub() {
 	      *) echo "invalid option $REPLY";;
 	  esac
 	done
-
 	# Only either one of the following:
 	#clear
 	#read -p "IMPORTANT - What is your boot drive? (e.g. /dev/sda) = " bootdrive
 	#grub-install --force --target=i386-pc --recheck $bootdrive
-	# grub-install --target=x86_64-efi --efi-directory=/boot --recheck
+	#grub-install --target=x86_64-efi --efi-directory=/boot --recheck
 	clear
 	mainMenu2
 }
+
 
 finalize() {
 clear
@@ -183,6 +181,7 @@ clear
 	clear
 	exit
 }
+
 
 mainMenu2() {
   PS3='Choice (ENTER to confirm): '
@@ -212,6 +211,7 @@ mainMenu2() {
       esac
   done
 }
+
 
 clear
 mainMenu2

@@ -8,8 +8,7 @@ launchPartitionManager() {
   read -p "Press ENTER to list your drives."
   clear
   lsblk # List drives; could also be fdisk -l
-
-  ## Detecting disks
+  ## Detecting disks start
   readarray -t lines < <(lsblk --nodeps -no name | grep "sd")
   echo "Please select a drive:"
   select choice in "${lines[@]}"; do
@@ -19,13 +18,11 @@ launchPartitionManager() {
   read -p "Choice (ENTER to confirm): " -r thedisk <<<"$choice"
   echo "We will be using the drive ' /dev/$thedisk '."
   drivetouse="/dev/$thedisk"
-  ## Detecting disks
-
+  ## Detecting disks end
   #echo "Please enter the drive you want to use. (For example, /dev/sda)"
   #read -p "Drive: " drivetouse
   #clear
   #echo "We will be using the drive '$drivetouse'."
-
   echo "Please make sure to have a BOOT, a SWAP and a ROOT partition."
   echo "Example of sizes/filesystems:"
   echo "BOOT = 100M = Linux Filesystem."
@@ -43,7 +40,6 @@ continueToPart2() {
   cp archin2.sh /mnt/archin2.sh
   cp archind.sh /mnt/archind.sh
   cp hosts /mnt/hosts
-
   clear
   # chrooting into the new system
   echo "Please manually do 'arch-chroot /mnt' and 'bash archin2.sh' to continue."
@@ -59,30 +55,29 @@ launchInstallation() {
   echo "BOOT = $bootpartition"
   echo "SWAP = $swappartition"
   echo "ROOT = $rootpartition"
-
-
   read -p "Press ENTER to continue if the above is correct."
   read -p "WARNING: This will format everything in the selected partitions. Press ENTER to proceed."
+  # Formatting
   mkfs.ext2 $bootpartition #boot
   mkswap $swappartition #swap
   mkfs.ext4 $rootpartition #root
   swapon $swappartition #activate swap if exists
   read -p "We will now mount the root partition. Press ENTER to proceed."
   clear
-
+  # Mounting
   mount $rootpartition /mnt
   mount $bootpartition /mnt/boot
   echo "It doesn't matter if /mnt/boot didn't mount."
-
-
+  # Proceed
   read -p "Press ENTER to install the base system."
   clear
   pacstrap /mnt base
-
+  # Gen fstab
   echo "Generating fstab..."
   genfstab -U /mnt >> /mnt/etc/fstab # Generate fstab
   continueToPart2
 }
+
 
 downloadRequiredScripts() {
   wget https://raw.githubusercontent.com/Fwsh/archin/master/archin2.sh
@@ -91,6 +86,7 @@ downloadRequiredScripts() {
   clear
   mainMenu
 }
+
 
 mainMenu() {
   PS3='Choice (ENTER to confirm): '
@@ -117,6 +113,7 @@ mainMenu() {
       esac
   done
 }
+
 
 clear
 mainMenu
