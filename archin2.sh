@@ -177,9 +177,14 @@ finalize() {
 	echo "If you want help with enabling your ethernet port as well as installing"
 	echo "a Desktop Environment, you can run 'bash /archind.sh' after booting."
 	echo "If not, simply delete it and never think about it again."
-	read -p "You may now eject your installation media and reboot. Press ENTER to continue."
+	read -p "[Press ENTER to continue.]"
 	clear
-	echo "To exit chroot and be able to reboot, type 'exit' and press ENTER."
+	echo "- - -"
+	echo "We are now back to the previous menu."
+	echo "To exit and be able to reboot, use the 'Quit' option (5),"
+	echo "at which point you can eject the installation media and reboot."
+	echo "- - -"
+	echo ""
 	exit
 }
 
