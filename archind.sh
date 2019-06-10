@@ -18,12 +18,13 @@ echo "Press ENTER to install the following:"
 echo "[sudo, neofetch, xfce4, lxdm]"
 echo "Installing lxdm will also enable it."
 echo "Everything will install automatically and your system will reboot."
+echo "DON'T FORGET TO SELECT 'Xfce Session' AT THE BOTTOM LEFT OF THE LOGIN MANAGER!"
 read -p "Press ENTER to proceed, or CTRL+C to cancel."
 # Update everything
 pacman -Syu
 
 # Install sudo
-#pacman -S sudo
+pacman -S sudo
 
 # Install neofetch
 pacman -S neofetch

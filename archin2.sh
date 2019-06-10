@@ -183,7 +183,7 @@ clear
 
 mainMenu2() {
   PS3='Choice (ENTER to confirm): '
-  options=("Setup Locale" "Setup Hostname" "Generate mkinitcpio" "Create root and user" "Install GRUB" "Finalize")
+  options=("Setup Locale" "Setup Hostname" "Generate mkinitcpio" "Create root account" "Install GRUB" "Finalize")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -196,7 +196,7 @@ mainMenu2() {
           "Generate mkinitcpio")
               mkinitcpioGeneration
               ;;
-          "Create root and user")
+          "Create root account")
               setRootPassword
               ;;
           "Install GRUB")
