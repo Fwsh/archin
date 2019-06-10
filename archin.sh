@@ -42,8 +42,9 @@ continueToPart2() {
   cp hosts /mnt/hosts
   clear
   # chrooting into the new system
-  echo "Please manually do 'arch-chroot /mnt' and 'bash archin2.sh' to continue."
+  echo "Please manually do 'arch-chroot /mnt' and 'bash archin2.sh' to continue if it fails to execute."
   read -p "(Quit the script in order to do so)."
+  chmod +x /mnt/archin2.sh
   arch-chroot /mnt ./archin2.sh # Root into the new system
 }
 
