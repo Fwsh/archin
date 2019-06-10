@@ -9,10 +9,23 @@ launchPartitionManager() {
   clear
   lsblk # List drives; could also be fdisk -l
 
-  echo "Please enter the drive you want to use. (For example, /dev/sda)"
-  read -p "Drive: " drivetouse
-  clear
-  echo "We will be using the drive '$drivetouse'."
+  ## Detecting disks
+  readarray -t lines < <(lsblk --nodeps -no name | grep "sd")
+  echo "Please select a drive:"
+  select choice in "${lines[@]}"; do
+    [[ -n $choice ]] || { echo "Invalid choice. Please try again." >&2; continue; }
+    break # valid, proceed
+  done
+  read -p "Choice (ENTER to confirm): " -r thedisk <<<"$choice"
+  echo "We will be using the drive ' /dev/$thedisk '."
+  drivetouse="/dev/$thedisk"
+  ## Detecting disks
+
+  #echo "Please enter the drive you want to use. (For example, /dev/sda)"
+  #read -p "Drive: " drivetouse
+  #clear
+  #echo "We will be using the drive '$drivetouse'."
+
   echo "Please make sure to have a BOOT, a SWAP and a ROOT partition."
   echo "Example of sizes/filesystems:"
   echo "BOOT = 100M = Linux Filesystem."
