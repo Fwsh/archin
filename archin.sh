@@ -50,25 +50,72 @@ continueToPart2() {
 
 
 launchInstallation() {
-  read -p "What is your BOOT partition? (e.g. /dev/sda1) = " bootpartition
-  read -p "What is your SWAP partition? (e.g. /dev/sda2) = " swappartition
-  read -p "What is your ROOT partition? (e.g. /dev/sda3) = " rootpartition
-  echo "BOOT = $bootpartition"
-  echo "SWAP = $swappartition"
-  echo "ROOT = $rootpartition"
+
+  # Boot partition
+  readarray -t lines < <(blkid -o device | grep "sd")
+  echo "- - -"
+  blkid -o list | grep "sd"
+  echo "- - -"
+  echo "Please select your BOOT partition:"
+  select choice in "${lines[@]}"; do
+    [[ -n $choice ]] || { echo "Invalid choice. Please try again." >&2; continue; }
+    break # valid, proceed
+  done
+  read -p "Choice (ENTER to confirm): " -r bootpartition <<<"$choice"
+  echo "We will be using the drive ' $bootpartition '."
+  driveforboot="$bootpartition"
+  clear
+
+  # Swap partition
+  readarray -t lines < <(blkid -o device | grep "sd")
+  echo "- - -"
+  blkid -o list | grep "sd"
+  echo "- - -"
+  echo "Please select your SWAP partition:"
+  select choice in "${lines[@]}"; do
+    [[ -n $choice ]] || { echo "Invalid choice. Please try again." >&2; continue; }
+    break # valid, proceed
+  done
+  read -p "Choice (ENTER to confirm): " -r swappartition <<<"$choice"
+  echo "We will be using the drive ' $swappartition '."
+  driveforswap="$swappartition"
+  clear
+
+  # Root partition
+  readarray -t lines < <(blkid -o device | grep "sd")
+  echo "- - -"
+  blkid -o list | grep "sd"
+  echo "- - -"
+  echo "Please select your ROOT partition:"
+  select choice in "${lines[@]}"; do
+    [[ -n $choice ]] || { echo "Invalid choice. Please try again." >&2; continue; }
+    break # valid, proceed
+  done
+  read -p "Choice (ENTER to confirm): " -r rootpartition <<<"$choice"
+  echo "We will be using the drive ' $rootpartition '."
+  driveforroot="$rootpartition"
+  clear
+
+  #read -p "What is your BOOT partition? (e.g. /dev/sda1) = " bootpartition
+  #read -p "What is your SWAP partition? (e.g. /dev/sda2) = " swappartition
+  #read -p "What is your ROOT partition? (e.g. /dev/sda3) = " rootpartition
+  echo "BOOT = $driveforboot"
+  echo "SWAP = $driveforswap"
+  echo "ROOT = $driveforroot"
   read -p "Press ENTER to continue if the above is correct."
   read -p "WARNING: This will format everything in the selected partitions. Press ENTER to proceed."
   # Formatting
-  mkfs.ext2 $bootpartition #boot
-  mkswap $swappartition #swap
-  mkfs.ext4 $rootpartition #root
-  swapon $swappartition #activate swap if exists
+  mkfs.ext2 $driveforboot #boot
+  mkswap $driveforswap #swap
+  mkfs.ext4 $driveforroot #root
+  swapon $driveforswap #activate swap if exists
   read -p "We will now mount the root partition. Press ENTER to proceed."
   clear
   # Mounting
-  mount $rootpartition /mnt
-  mount $bootpartition /mnt/boot
-  echo "It doesn't matter if /mnt/boot didn't mount."
+  mount $driveforroot /mnt
+  mount $driveforboot /mnt/boot
+  #echo "It doesn't matter if /mnt/boot didn't mount."
+  clear
   # Proceed
   read -p "Press ENTER to install the base system."
   clear
