@@ -48,8 +48,8 @@ setupLocale() {
 setupHostname() {
 	# Hostname stuff
 	clear
-	read -p "Please type in your hostname (aka your computer's name)."
-	read -p "Hostname:" myhostname
+	echo "Please type in your hostname (aka your computer's name)."
+	read -p "Hostname: " myhostname
 	echo $myhostname > /etc/hostname # Write the computer's hostname, for example "arch"
 	cp hosts /etc/hosts
 	clear
@@ -79,35 +79,38 @@ setRootPassword() {
 	# Accounts
 	clear
 	echo "Setting up 'root' user."
-	passwd # Set the root password (archin)
+	passwd # Set the root password
 	clear
-	echo "Setting up user account."
-	read -p "Username (lowercase only): " $thenewuser
-	echo "Adding user $thenewuser."
-	useradd $thenewuser
-	passwd $thenewuser
+	#echo "Setting up user account."
+	#read -p "Username (lowercase only): " $thenewuser
+	#echo "Adding user $thenewuser."
+	#useradd $thenewuser
+	#passwd $thenewuser
+	#clear
+	#echo "Do you want to install 'sudo'?"
+	#echo "This will also add your normal account to the sudoers group."
+	#echo "By doing so, it will have the ability to run root commands."
+	#PS3='Choice (ENTER to confirm): '
+	#options=("Yes" "No")
+	#select opt in "${options[@]}"
+	#do
+	#  case $opt in
+	#      "Yes")
+	#          pacman -Sy
+	#          pacman -S sudo
+	#          gpasswd -a $thenewuser sudoers
+	#          echo '$thenewuser has been added to the sudoers group.'
+	#          clear
+	#		   mainMenu2
+	#          ;;
+	#      "No")
+	#         clear
+	#		  mainMenu2
+	#          ;;
+	#      *) echo "invalid option $REPLY";;
+	#  esac
+	#done
 	clear
-	echo "Do you want to install 'sudo'?"
-	echo "This will also add your normal account to the sudoers group."
-	echo "By doing so, it will have the ability to run root commands."
-	PS3='Choice (ENTER to confirm): '
-	options=("Yes" "No")
-	select opt in "${options[@]}"
-	do
-	  case $opt in
-	      "Yes")
-	          pacman -Sy
-	          pacman -S sudo
-	          gpasswd -a $thenewuser sudoers
-	          clear
-	          echo '$thenewuser has been added to the sudoers group.'
-	          ;;
-	      "No")
-			  mainMenu2
-	          ;;
-	      *) echo "invalid option $REPLY";;
-	  esac
-	done
 	mainMenu2
 }
 
@@ -115,7 +118,7 @@ setRootPassword() {
 installingGrub() {
 	# Getting grub and installing it
 	clear
-	read -p "Press ENTER to install grub."
+	read -p "Press ENTER to install GRUB."
 	pacman -S grub efibootmgr # Install grub and efibootmgr
 	# Processing grub
 	mkdir /boot/grub
