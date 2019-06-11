@@ -52,7 +52,7 @@
 mainMenu3() {
   clear
   echo "- - archin: Part 3 (optional) - -"
-  echo "!!! NOTICE !!! - You may need to run 'Setup Network' more than once - this is a bug."
+  #echo "!!! NOTICE !!! - You may need to run 'Setup Network' more than once - this is a bug."
   PS3='Choice (ENTER to confirm): '
   options=("Setup Network" "Update" "Install a Desktop Environment" "Install a Login Manager [lxdm]" "Install SUDO" "Install NEOFETCH" "Reboot")
   select opt in "${options[@]}"
@@ -60,8 +60,8 @@ mainMenu3() {
       case $opt in
           "Setup Network")
 			  clear
-			  systemctl enable dhcpcd
 			  systemctl start dhcpcd
+			  systemctl enable dhcpcd
 			  dhcpcd
 			  echo "Done."
 			  mainMenu3
