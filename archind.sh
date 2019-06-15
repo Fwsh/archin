@@ -109,6 +109,7 @@ mainMenu3() {
 			              ;;
 			          "cinnamon")
 			              pacman -S cinnamon
+			              pacman -S lxterminal
 			              mainMenu3
 			              ;;
 			          "plasma")
