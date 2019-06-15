@@ -111,6 +111,47 @@ setRootPassword() {
 	mainMenu2
 }
 
+setUserPassword() {
+	# Accounts
+	clear
+	echo "Setting up user account."
+	read -p "Username (lowercase only): " thenewuser
+	echo "Adding user $thenewuser."
+	useradd $thenewuser
+	passwd $thenewuser
+	chown $thenewuser:$thenewuser /home/$thenewuser
+	chmod 700 /home/$thenewuser
+	clear
+	echo "Do you want to install 'sudo'?"
+	echo "This will also add your normal account to the sudoers group."
+	echo "By doing so, it will have the ability to run root commands."
+	PS3='Choice (ENTER to confirm): '
+	options=("Yes" "No")
+	select opt in "${options[@]}"
+	do
+	  case $opt in
+	      "Yes")
+	          pacman -Syu
+	          pacman -S sudo
+	          groupadd sudoers
+	          gpasswd -a $thenewuser sudoers
+	          echo "$thenewuser ALL=(ALL) ALL" > /etc/sudoers.d/$thenewuser
+	          echo "$thenewuser ALL=(ALL) ALL" >> /etc/sudoers
+	          echo '$thenewuser has been added to the sudoers group.'
+	          clear
+			  mainMenu2
+	          ;;
+	      "No")
+	         clear
+			  mainMenu2
+	          ;;
+	      *) echo "invalid option $REPLY";;
+	  esac
+	done
+	clear
+	mainMenu2
+}
+
 
 installingGrub() {
 	# Getting grub and installing it
@@ -192,7 +233,7 @@ finalize() {
 mainMenu2() {
   echo "- - archin: Part 2 - -"
   PS3='Choice (ENTER to confirm): '
-  options=("Setup Locale" "Setup Hostname" "Generate mkinitcpio" "Create root account" "Install GRUB" "Finalize")
+  options=("Setup Locale" "Setup Hostname" "Generate mkinitcpio" "Create root account" "Create user account" "Install GRUB" "Finalize")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -208,6 +249,9 @@ mainMenu2() {
           "Create root account")
               setRootPassword
               ;;
+          "Create user account")
+			  setUserPassword
+			  ;;
           "Install GRUB")
               installingGrub
               ;;
