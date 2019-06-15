@@ -119,6 +119,8 @@ setUserPassword() {
 	echo "Adding user $thenewuser."
 	useradd $thenewuser
 	passwd $thenewuser
+	mkdir /home/$thenewuser
+	mkdir /home/$thenewuser/Desktop
 	chown $thenewuser:$thenewuser /home/$thenewuser
 	chmod 700 /home/$thenewuser
 	clear
@@ -213,6 +215,7 @@ installingGrub() {
 
 finalize() {
 	clear
+
 	echo "Finished."
 	echo "The base system is now installed. However, you may still want to install extra tools."
 	echo "If you want help with enabling your ethernet port as well as installing"
