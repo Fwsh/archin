@@ -78,35 +78,35 @@ setRootPassword() {
 	echo "Setting up 'root' user."
 	passwd # Set the root password
 	clear
-	#echo "Setting up user account."
-	#read -p "Username (lowercase only): " $thenewuser
-	#echo "Adding user $thenewuser."
-	#useradd $thenewuser
-	#passwd $thenewuser
-	#clear
-	#echo "Do you want to install 'sudo'?"
-	#echo "This will also add your normal account to the sudoers group."
-	#echo "By doing so, it will have the ability to run root commands."
-	#PS3='Choice (ENTER to confirm): '
-	#options=("Yes" "No")
-	#select opt in "${options[@]}"
-	#do
-	#  case $opt in
-	#      "Yes")
-	#          pacman -Sy
-	#          pacman -S sudo
-	#          gpasswd -a $thenewuser sudoers
-	#          echo '$thenewuser has been added to the sudoers group.'
-	#          clear
-	#		   mainMenu2
-	#          ;;
-	#      "No")
-	#         clear
-	#		  mainMenu2
-	#          ;;
-	#      *) echo "invalid option $REPLY";;
-	#  esac
-	#done
+	echo "Setting up user account."
+	read -p "Username (lowercase only): " thenewuser
+	echo "Adding user $thenewuser."
+	useradd $thenewuser
+	passwd $thenewuser
+	clear
+	echo "Do you want to install 'sudo'?"
+	echo "This will also add your normal account to the sudoers group."
+	echo "By doing so, it will have the ability to run root commands."
+	PS3='Choice (ENTER to confirm): '
+	options=("Yes" "No")
+	select opt in "${options[@]}"
+	do
+	  case $opt in
+	      "Yes")
+	          pacman -Syu
+	          pacman -S sudo
+	          gpasswd -a $thenewuser sudoers
+	          echo '$thenewuser has been added to the sudoers group.'
+	          clear
+			   mainMenu2
+	          ;;
+	      "No")
+	         clear
+			  mainMenu2
+	          ;;
+	      *) echo "invalid option $REPLY";;
+	  esac
+	done
 	clear
 	mainMenu2
 }

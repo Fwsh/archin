@@ -52,14 +52,17 @@
 mainMenu3() {
   clear
   echo "- - archin: Part 3 (optional) - -"
-  #echo "!!! NOTICE !!! - You may need to run 'Setup Network' more than once - this is a bug."
+  echo "!!! NOTICE !!! - To install 'yay' (an Arch User Repository tool), please log in as a normal user first."
   PS3='Choice (ENTER to confirm): '
-  options=("Setup Network" "Update" "Install a Desktop Environment" "Install a Login Manager [lxdm]" "Install SUDO" "Install NEOFETCH" "Reboot")
+  options=("Setup Network" "Update" "Install Drivers" "Install a Desktop Environment" "Install a Login Manager [lxdm]" "Install SUDO" "Install WGET" "Install NEOFETCH" "Install YAY [AUR]" "Reboot")
   select opt in "${options[@]}"
   do
       case $opt in
           "Setup Network")
 			  clear
+			  systemctl start dhcpcd
+			  systemctl enable dhcpcd
+			  dhcpcd
 			  systemctl start dhcpcd
 			  systemctl enable dhcpcd
 			  dhcpcd
@@ -71,19 +74,41 @@ mainMenu3() {
 			  pacman -Syu
 			  mainMenu3
               ;;
-          "Install a Desktop Environment")
+          "Install Drivers")
 			  clear
 			  PS3='Choice (ENTER to confirm): '
-			  options=("xfce4" "lxde" "plasma" "i3-wm")
+			  options=("PulseAudio")
 			  select opt in "${options[@]}"
 			  do
 			      case $opt in
-			          "xfce4")
-			              pacman -S xfce4
+			          "PulseAudio")
+			              pacman -S pulseaudio
 			              mainMenu3
 			              ;;
+			          *) echo "invalid option $REPLY";;
+			      esac
+			  done
+			  mainMenu3
+              ;;
+          "Install a Desktop Environment")
+			  clear
+			  echo "Only LXDE and XFCE4 have been tested yet."
+			  PS3='Choice (ENTER to confirm): '
+			  options=("xfce4" "lxde" "cinnamon" "plasma" "i3-wm")
+			  select opt in "${options[@]}"
+			  do
+			      case $opt in
 			          "lxde")
 			              pacman -S lxde
+			              mainMenu3
+			              ;;
+			          "xfce4")
+			              pacman -S xfce4
+			              pacman -S xfce4-goodies
+			              mainMenu3
+			              ;;
+			          "cinnamon")
+			              pacman -S cinnamon
 			              mainMenu3
 			              ;;
 			          "plasma")
@@ -109,9 +134,23 @@ mainMenu3() {
 			  pacman -S sudo
 			  mainMenu3
               ;;
+          "Install WGET")
+			  clear
+			  pacman -S wget
+			  mainMenu3
+              ;;
           "Install NEOFETCH")
 			  clear
 			  pacman -S neofetch
+			  mainMenu3
+              ;;
+          "Install YAY [AUR]")
+			  clear
+			  sudo pacman -Syu
+			  sudo pacman -S git
+			  git clone https://aur.archlinux.org/yay.git
+			  cd yay
+			  makepkg -si
 			  mainMenu3
               ;;
           "Reboot")

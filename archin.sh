@@ -27,7 +27,7 @@ launchPartitionManager() {
   echo "Example of sizes/filesystems:"
   echo "BOOT = 100M = Linux Filesystem."
   echo "SWAP = 4G = Linux Swap."
-  echo "ROOT = 15G = Linux Filesystem.   //  You can set whatever size you want for ROOT."
+  echo "ROOT (/) = 15G = Linux Filesystem. // This is where everything is going to be installed in."
   read -p "Press ENTER whenever you're ready."
   cfdisk $drivetouse
   clear
@@ -85,7 +85,7 @@ launchInstallation() {
   echo "- - -"
   blkid -o list | grep "sd"
   echo "- - -"
-  echo "Please select your ROOT partition:"
+  echo "Please select your ROOT (/) partition:"
   select choice in "${lines[@]}"; do
     [[ -n $choice ]] || { echo "Invalid choice. Please try again." >&2; continue; }
     break # valid, proceed
@@ -100,7 +100,7 @@ launchInstallation() {
   #read -p "What is your ROOT partition? (e.g. /dev/sda3) = " rootpartition
   echo "BOOT = $driveforboot"
   echo "SWAP = $driveforswap"
-  echo "ROOT = $driveforroot"
+  echo "ROOT (/) = $driveforroot"
   read -p "Press ENTER to continue if the above is correct."
   read -p "WARNING: This will format everything in the selected partitions. Press ENTER to proceed."
   # Formatting
