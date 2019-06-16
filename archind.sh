@@ -52,7 +52,13 @@
 mainMenu3() {
   clear
   echo "- - archin: Part 3 (optional) - -"
+  echo "!!! NOTICE !!!"
+  echo "!!! NOTICE !!!"
+  echo "!!! NOTICE !!!"
   echo "!!! NOTICE !!! - To install 'yay' (an Arch User Repository tool), please log in as a normal user first."
+  echo "!!! NOTICE !!!"
+  echo "!!! NOTICE !!!"
+  echo "!!! NOTICE !!!"
   PS3='Choice (ENTER to confirm): '
   options=("Setup Network" "Update" "Install Drivers" "Install a Desktop Environment" "Install a Login Manager [lxdm]" "Install SUDO" "Install WGET" "Install NEOFETCH" "Install YAY [AUR]" "Reboot")
   select opt in "${options[@]}"
