@@ -60,13 +60,13 @@ mainMenu3() {
       case $opt in
           "Setup Network")
 			  clear
+			  read -p "Press ENTER to do step 1 of 3."
 			  systemctl start dhcpcd
+			  read -p "Press ENTER to do step 2 of 3."
 			  systemctl enable dhcpcd
+			  read -p "Press ENTER to do step 3 of 3."
 			  dhcpcd
-			  systemctl start dhcpcd
-			  systemctl enable dhcpcd
-			  dhcpcd
-			  echo "Done."
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Update")
