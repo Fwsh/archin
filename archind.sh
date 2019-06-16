@@ -10,44 +10,6 @@
 #systemctl enable dhcpcd@$adaptercode
 #systemctl start dhcpcd@$adaptercode
 
-# Using dhcpcd instead
-#systemctl enable dhcpcd
-#systemctl start dhcpcd
-#dhcpcd
-#echo "Done."
-
-# Ping it
-#ping 8.8.8.8
-
-# Confirm
-#echo "Press ENTER to install the following:"
-#echo "[sudo, neofetch, xfce4, lxdm]"
-#echo "Installing lxdm will also enable it."
-#echo "Everything will install automatically and your system will reboot."
-#echo "DON'T FORGET TO SELECT 'Xfce Session' AT THE BOTTOM LEFT OF THE LOGIN MANAGER!"
-#read -p "Press ENTER to proceed, or CTRL+C to cancel."
-
-# Update everything
-#pacman -Syu
-
-# Install sudo
-#pacman -S sudo
-
-# Install neofetch
-#pacman -S neofetch
-
-# Install xfce4
-#pacman -S xfce4
-
-# Install lxdm
-#pacman -S lxdm
-
-# Enable lxdm
-#systemctl enable lxdm
-
-#read -p "Done. Press ENTER to reboot."
-#reboot
-
 
 mainMenu3() {
   clear
