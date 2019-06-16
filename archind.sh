@@ -17,7 +17,8 @@ mainMenu3() {
   echo "!!! NOTICE !!!"
   echo "!!! NOTICE !!!"
   echo "!!! NOTICE !!!"
-  echo "!!! NOTICE !!! - To install 'yay' (an Arch User Repository tool), please log in as a normal user first."
+  echo "!!! NOTICE !!! - To install 'yay' (an AUR tool), please log in as a normal user first."
+  echo "!!! NOTICE !!! - Please run the rest as root."
   echo "!!! NOTICE !!!"
   echo "!!! NOTICE !!!"
   echo "!!! NOTICE !!!"
@@ -40,6 +41,7 @@ mainMenu3() {
           "Update")
 			  clear
 			  pacman -Syu
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Install Drivers")
@@ -56,6 +58,7 @@ mainMenu3() {
 			          *) echo "invalid option $REPLY";;
 			      esac
 			  done
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Install a Desktop Environment")
@@ -68,24 +71,29 @@ mainMenu3() {
 			      case $opt in
 			          "lxde")
 			              pacman -S lxde
+			              read -p "Done. Press ENTER to continue."
 			              mainMenu3
 			              ;;
 			          "xfce4")
 			              pacman -S xfce4
-			              pacman -S xfce4-goodies
+			              pacman -S xfce4-goodies.
+			              read -p "Done. Press ENTER to continue."
 			              mainMenu3
 			              ;;
 			          "cinnamon")
 			              pacman -S cinnamon
 			              pacman -S lxterminal
+			              read -p "Done. Press ENTER to continue."
 			              mainMenu3
 			              ;;
 			          "plasma")
 			              pacman -S plasma
+			              read -p "Done. Press ENTER to continue."
 			              mainMenu3
 			              ;;
 			          "i3-wm")
 			              pacman -S i3-wm
+			              read -p "Done. Press ENTER to continue."
 			              mainMenu3
 			              ;;
 			          *) echo "invalid option $REPLY";;
@@ -96,21 +104,25 @@ mainMenu3() {
 			  clear
 			  pacman -S lxdm
 			  systemctl enable lxdm
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Install SUDO")
 			  clear
 			  pacman -S sudo
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Install WGET")
 			  clear
 			  pacman -S wget
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Install NEOFETCH")
 			  clear
 			  pacman -S neofetch
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Install YAY [AUR]")
@@ -120,6 +132,7 @@ mainMenu3() {
 			  git clone https://aur.archlinux.org/yay.git
 			  cd yay
 			  makepkg -si
+			  read -p "Done. Press ENTER to continue."
 			  mainMenu3
               ;;
           "Reboot")
