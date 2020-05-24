@@ -215,7 +215,9 @@ installingGrub() {
 
 finalize() {
 	clear
-
+	echo "Installing dhcpcd:"
+	pacman -S dhcpcd
+	systemctl enable dhcpcd
 	echo "Finished."
 	echo "The base system is now installed. However, you may still want to install extra tools."
 	echo "If you want help with enabling your ethernet port as well as installing"
