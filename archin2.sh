@@ -64,10 +64,10 @@ setupHostname() {
 
 mkinitcpioGeneration() {
 	# Generating mkinitcpio
-	clear
+	#clear
 	echo "Generating mkinitcpio"
 	mkinitcpio -p linux # Create initramfs
-	clear
+	#clear
 	mainMenu2
 }
 
