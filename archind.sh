@@ -75,8 +75,8 @@ mainMenu3() {
 			              mainMenu3
 			              ;;
 			          "xfce4")
-			              pacman -S xfce4
-			              pacman -S xfce4-goodies.
+			              pacman -Syu xfce4
+			              pacman -Syu xfce4-goodies
 			              read -p "Done. Press ENTER to continue."
 			              mainMenu3
 			              ;;
