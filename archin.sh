@@ -118,7 +118,8 @@ launchInstallation() {
   # Proceed
   read -p "Press ENTER to install the base system."
   clear
-  pacstrap /mnt base
+  pacman -Syu base # Now mandatory
+  pacstrap /mnt base linux linux-firmware # linux linux-firmware # Now mandatory
   # Gen fstab
   echo "Generating fstab..."
   genfstab -U /mnt >> /mnt/etc/fstab # Generate fstab
