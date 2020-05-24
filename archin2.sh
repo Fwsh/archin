@@ -66,7 +66,7 @@ mkinitcpioGeneration() {
 	# Generating mkinitcpio
 	#clear
 	echo "Generating mkinitcpio"
-	mkinitcpio -p linux # Create initramfs
+	mkinitcpio -P # Create initramfs
 	#clear
 	mainMenu2
 }
